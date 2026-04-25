@@ -2,6 +2,11 @@ FROM ruby:3.2
 
 WORKDIR /app
 
+RUN apt-get update -qq && apt-get install -y \
+  build-essential \
+  libpq-dev \
+  nodejs
+
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
@@ -9,8 +14,8 @@ COPY . .
 
 ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
+ENV SECRET_KEY_BASE=dummy
 
-# 👉 ここ追加（超重要）
 RUN bundle exec rails assets:precompile
 
 EXPOSE 3000
