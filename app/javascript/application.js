@@ -1,3 +1,13 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("menu-toggle");
+  const nav = document.getElementById("nav");
+
+  if (!btn || !nav) return;
+
+  btn.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+});
