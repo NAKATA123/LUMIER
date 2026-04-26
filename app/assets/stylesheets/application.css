@@ -1,5 +1,5 @@
 /* =====================
-   全体
+   ベース
 ===================== */
 * {
   box-sizing: border-box;
@@ -7,12 +7,16 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: #333;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #444;
+  line-height: 1.6;
+  background: #fffdf9;
+  overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* =====================
@@ -22,63 +26,55 @@ html {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #eee;
   z-index: 1000;
 }
 
-.header .container {
+.container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 18px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  height: 70px;
+  padding: 0 20px;
 }
 
 /* ロゴ */
 .logo {
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #6b5b4d;
+  white-space: nowrap;
 }
 
-/* =====================
-   PCナビ
-===================== */
+/* PCナビ */
 .pc-nav {
   display: flex;
-  gap: 28px;
-  flex: 1;
-  justify-content: center;
 }
 
 .pc-nav a {
-  text-decoration: none;
-  color: #333;
+  margin: 0 12px;
   font-size: 13px;
-  letter-spacing: 1px;
+  color: #6b5b4d;
   transition: 0.3s;
 }
 
 .pc-nav a:hover {
-  color: #c89b5c;
+  color: #b89b74;
 }
 
-/* =====================
-   LINEボタン
-===================== */
-.header-right .line-btn {
-  background: linear-gradient(135deg, #00c300, #06e000);
+/* LINEボタン */
+.line-btn {
+  background: linear-gradient(135deg, #8edb8e, #6bcf6b);
   color: #fff;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 20px;
   font-size: 13px;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0,195,0,0.25);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* =====================
@@ -86,59 +82,53 @@ html {
 ===================== */
 .menu-toggle {
   display: none;
-  font-size: 28px;
+  font-size: 26px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
 /* =====================
-   オーバーレイ
-===================== */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s;
-  z-index: 900;
-}
-
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* =====================
-   モバイルナビ
+   スマホメニュー
 ===================== */
 .mobile-nav {
   position: fixed;
   top: 0;
-  left: -100%;
-  width: 75%;
+  left: -260px;
+  width: 260px;
   height: 100vh;
-  background: white;
-  padding-top: 80px;
+  background: #fffdf9;
+  padding: 80px 20px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
   transition: 0.3s;
-  z-index: 1000;
+  z-index: 1001;
+}
+
+.mobile-nav a {
+  font-size: 16px;
+  color: #444;
 }
 
 .mobile-nav.active {
   left: 0;
 }
 
-.mobile-nav a {
-  padding: 16px 24px;
-  border-bottom: 1px solid #eee;
-  font-size: 16px;
+/* 背景 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  z-index: 1000;
 }
 
-.mobile-nav a:hover {
-  background: #f5f5f5;
+.overlay.active {
+  display: block;
 }
 
 /* =====================
@@ -146,81 +136,148 @@ html {
 ===================== */
 .hero {
   height: 100vh;
+  margin-top: 70px;
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 70px;
-  position: relative;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
+  text-align: center;
+  color: #fff;
 }
 
 .hero-content {
-  text-align: center;
-  color: white;
-  position: relative;
-  z-index: 1;
+  padding: 40px;
+  border-radius: 12px;
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  margin: 0;
-  letter-spacing: 3px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 46px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 .hero p {
+  font-family: 'Noto Serif JP', serif;
   font-size: 18px;
-  margin: 20px 0;
+  letter-spacing: 3px;
+  margin-top: 20px;
+  opacity: 0.9;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ボタン */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+
+  /* 透明感グラデーション */
+  background: linear-gradient(135deg, rgba(255,182,193,0.7), rgba(255,220,230,0.7));
+
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 1px;
+
+  /* ふんわり感 */
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow: 0 8px 20px rgba(255,182,193,0.25);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(255,182,193,0.9), rgba(255,220,230,0.9));
 }
 
 /* =====================
    セクション
 ===================== */
 section {
-  padding: 120px 20px;
+  padding: 100px 20px;
   text-align: center;
 }
 
 .gray {
-  background: #f7f7f7;
+  background: #faf7f3;
 }
 
 h2 {
-  font-size: 30px;
-  margin-bottom: 25px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #6b5b4d;
 }
 
 /* =====================
-   ボタン
+   フロー
 ===================== */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: linear-gradient(135deg, #c89b5c, #e6c27a);
-  color: #fff;
-  padding: 14px 32px;
-  border-radius: 999px;
-  text-decoration: none;
+.flow-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
+.flow-item {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.flow-number {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 182, 193, 0.8); /* ←ここ */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
 /* =====================
    フッター
 ===================== */
 .footer {
-  background: #1c1c1c;
+  background: #2b2b2b;
   color: #fff;
-  padding: 70px 20px;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.footer a {
+  color: #fff;
+  font-size: 14px;
+}
+
+.footer-bottom {
   text-align: center;
+  margin-top: 40px;
+  font-size: 12px;
+  opacity: 0.7;
 }
 
 /* =====================
@@ -228,39 +285,29 @@ h2 {
 ===================== */
 @media (max-width: 768px) {
 
-  /* ハンバーガー */
   .menu-toggle {
     display: block;
-    position: absolute;
-    left: 20px;
-    top: 18px;
-    z-index: 1100;
   }
 
-  /* PCナビ消す */
   .pc-nav {
     display: none;
   }
 
-  .header-right {
-    display: none;
+  .flow-container {
+    grid-template-columns: 1fr;
   }
 
-  /* ロゴ中央 */
-  .header .container {
-    justify-content: center;
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 
-  /* 文字調整 */
   .hero h1 {
-    font-size: 34px;
+    font-size: 28px;
   }
 
-  .hero p {
-    font-size: 15px;
-  }
-
-  section {
-    padding: 80px 15px;
+  .line-btn {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 }
