@@ -83,6 +83,7 @@ a {
 .menu-toggle {
   display: none;
   font-size: 26px;
+  color: #6b5b4d;
   background: none;
   border: none;
   cursor: pointer;
@@ -104,6 +105,7 @@ a {
   gap: 20px;
   transition: 0.3s;
   z-index: 1001;
+  box-shadow: 8px 0 24px rgba(0,0,0,0.08);
 }
 
 .mobile-nav a {
@@ -113,6 +115,21 @@ a {
 
 .mobile-nav.active {
   left: 0;
+}
+
+/* 閉じるボタン */
+.menu-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  color: #6b5b4d;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 /* 背景 */
@@ -310,42 +327,6 @@ h2 {
 }
 
 /* =====================
-   レスポンシブ
-===================== */
-@media (max-width: 768px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .pc-nav {
-    display: none;
-  }
-
-  .flow-container {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero {
-    height: calc(100vh - 70px);
-  }
-
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .line-btn {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-}
-
-/* =====================
    下層ページ
 ===================== */
 .page-hero {
@@ -457,7 +438,41 @@ h2 {
   font-size: 20px;
 }
 
+/* =====================
+   レスポンシブ
+===================== */
 @media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .pc-nav {
+    display: none;
+  }
+
+  .flow-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero {
+    height: calc(100vh - 70px);
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .line-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
   .page-hero {
     padding: 120px 20px 70px;
   }
@@ -475,4 +490,3 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
-
