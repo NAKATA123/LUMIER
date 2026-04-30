@@ -1,5 +1,5 @@
 <!-- ヒーロー -->
-<section class="hero" style="background-image: url('<%= asset_path("hero.jpg") %>')">
+<section class="hero" style="--hero-image: url('<%= asset_path("hero.jpg") %>')">
   <div class="hero-content">
     <h1>出会いに、やさしい光を。</h1>
     <p>いろんな"覚悟"を応援する結婚相談所</p>
@@ -23,36 +23,42 @@
   <div class="flow-container">
 
     <div class="flow-item">
+      <%= image_tag "flow-consultation.svg", alt: "無料相談のイメージ", class: "flow-image" %>
       <div class="flow-number">1</div>
       <h3>無料相談</h3>
       <p>まずはお気軽にご相談ください。理想やお悩みを丁寧にヒアリングします。</p>
     </div>
 
     <div class="flow-item">
+      <%= image_tag "flow-join.svg", alt: "ご入会のイメージ", class: "flow-image" %>
       <div class="flow-number">2</div>
       <h3>ご入会</h3>
       <p>サービス内容や料金にご納得いただいた上で、ご入会となります。</p>
     </div>
 
     <div class="flow-item">
+      <%= image_tag "flow-profile.svg", alt: "活動準備のイメージ", class: "flow-image" %>
       <div class="flow-number">3</div>
       <h3>活動準備</h3>
       <p>プロフィール作成やお相手探しの方針を一緒に整えていきます。</p>
     </div>
 
     <div class="flow-item">
+      <%= image_tag "flow-meeting.svg", alt: "お見合いのイメージ", class: "flow-image" %>
       <div class="flow-number">4</div>
       <h3>お見合い</h3>
       <p>気になるお相手との出会いをセッティングし、安心して進められるようサポートします。</p>
     </div>
 
     <div class="flow-item">
+      <%= image_tag "flow-dating.svg", alt: "交際のイメージ", class: "flow-image" %>
       <div class="flow-number">5</div>
       <h3>交際</h3>
       <p>お互いの理解を深めながら、結婚を見据えたお付き合いへ進みます。</p>
     </div>
 
     <div class="flow-item">
+      <%= image_tag "flow-marriage.svg", alt: "ご成婚のイメージ", class: "flow-image" %>
       <div class="flow-number">6</div>
       <h3>ご成婚</h3>
       <p>お二人が納得して未来へ進めるよう、成婚まで丁寧に伴走します。</p>

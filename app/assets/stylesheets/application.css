@@ -169,8 +169,6 @@ a {
   position: relative;
   height: calc(100vh - 70px);
   margin-top: 70px;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,14 +186,45 @@ a {
     rgba(255, 255, 255, 0.28),
     rgba(255, 255, 255, 0.08)
   );
+  z-index: 1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.86) saturate(0.94);
+  transform: scale(1.02);
+  animation: heroImageGlow 2.8s ease-out forwards;
   z-index: 0;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: 40px;
   border-radius: 12px;
+}
+
+@keyframes heroImageGlow {
+  from {
+    filter: brightness(0.86) saturate(0.94);
+    opacity: 0.88;
+  }
+
+  to {
+    filter: brightness(1) saturate(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::after {
+    animation: none;
+  }
 }
 
 .hero h1 {
@@ -276,10 +305,20 @@ h2 {
 
 .flow-item {
   background: #fff;
-  padding: 25px;
+  padding: 16px 16px 25px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
   text-align: left;
+  overflow: hidden;
+}
+
+.flow-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .flow-number {

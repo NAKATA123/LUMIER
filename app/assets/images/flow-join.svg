@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title">
+  <title id="title">ご入会の仮画像</title>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff3f5"/>
+      <stop offset="1" stop-color="#eadfd6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <circle cx="170" cy="110" r="105" fill="#fffdf9" opacity=".58"/>
+  <rect x="245" y="118" width="310" height="264" rx="18" fill="#fffdf9"/>
+  <rect x="290" y="176" width="220" height="14" rx="7" fill="#cfa48f" opacity=".55"/>
+  <rect x="290" y="222" width="176" height="12" rx="6" fill="#b89b74" opacity=".36"/>
+  <rect x="290" y="262" width="210" height="12" rx="6" fill="#b89b74" opacity=".28"/>
+  <path d="M504 323l64-78 24 20-64 78-42 14z" fill="#a98467" opacity=".68"/>
+</svg>
