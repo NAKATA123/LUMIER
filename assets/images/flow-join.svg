@@ -1,16 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title">
-  <title id="title">ご入会の仮画像</title>
+  <title id="title">ご入会のイメージ</title>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#fff3f5"/>
-      <stop offset="1" stop-color="#eadfd6"/>
+      <stop offset="0" stop-color="#fff7f4"/>
+      <stop offset="1" stop-color="#dbe8ee"/>
     </linearGradient>
   </defs>
   <rect width="800" height="500" fill="url(#bg)"/>
-  <circle cx="170" cy="110" r="105" fill="#fffdf9" opacity=".58"/>
-  <rect x="245" y="118" width="310" height="264" rx="18" fill="#fffdf9"/>
-  <rect x="290" y="176" width="220" height="14" rx="7" fill="#cfa48f" opacity=".55"/>
-  <rect x="290" y="222" width="176" height="12" rx="6" fill="#b89b74" opacity=".36"/>
-  <rect x="290" y="262" width="210" height="12" rx="6" fill="#b89b74" opacity=".28"/>
-  <path d="M504 323l64-78 24 20-64 78-42 14z" fill="#a98467" opacity=".68"/>
+  <circle cx="152" cy="120" r="100" fill="#fffdf9" opacity=".7"/>
+  <circle cx="660" cy="380" r="145" fill="#f1c0af" opacity=".18"/>
+  <rect x="236" y="104" width="328" height="284" rx="18" fill="#fffdf9"/>
+  <rect x="274" y="152" width="252" height="12" rx="6" fill="#cfa48f" opacity=".45"/>
+  <rect x="274" y="192" width="188" height="12" rx="6" fill="#eadfd6"/>
+  <rect x="274" y="232" width="226" height="12" rx="6" fill="#eadfd6"/>
+  <rect x="274" y="272" width="164" height="12" rx="6" fill="#eadfd6"/>
+  <path d="M305 335c28-28 56-28 84 0 29-27 57-27 85 0" fill="none" stroke="#a66d62" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="210" cy="264" r="42" fill="#f1c0af"/>
+  <path d="M166 262c5-43 37-62 78-42 21 11 28 37 17 66-31 1-67-1-95-24z" fill="#6b4a3e"/>
+  <path d="M132 386c12-48 43-72 80-72s68 24 80 72z" fill="#ffffff"/>
+  <circle cx="194" cy="267" r="4" fill="#5d463e"/>
+  <circle cx="226" cy="267" r="4" fill="#5d463e"/>
+  <circle cx="596" cy="264" r="42" fill="#e8b7a8"/>
+  <path d="M552 262c5-43 37-62 78-42 21 11 28 37 17 66-31 1-67-1-95-24z" fill="#8c6251"/>
+  <path d="M516 386c13-48 44-72 81-72s68 24 80 72z" fill="#f7fbfc"/>
+  <circle cx="580" cy="267" r="4" fill="#5d463e"/>
+  <circle cx="612" cy="267" r="4" fill="#5d463e"/>
+  <path d="M334 410h132" fill="none" stroke="#b89b74" stroke-width="12" stroke-linecap="round" opacity=".32"/>
+  <rect x="0" y="0" width="800" height="500" fill="none" stroke="#eadfd6" stroke-width="16"/>
 </svg>

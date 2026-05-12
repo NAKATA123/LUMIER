@@ -1,15 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title">
-  <title id="title">お見合いの仮画像</title>
+  <title id="title">お見合いのイメージ</title>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#fff7ef"/>
-      <stop offset="1" stop-color="#ead8cf"/>
+      <stop offset="0" stop-color="#fff7f4"/>
+      <stop offset="1" stop-color="#dbe8ee"/>
     </linearGradient>
   </defs>
   <rect width="800" height="500" fill="url(#bg)"/>
-  <circle cx="400" cy="250" r="152" fill="#fffdf9" opacity=".64"/>
-  <rect x="210" y="305" width="380" height="28" rx="14" fill="#a98467" opacity=".28"/>
-  <rect x="260" y="214" width="96" height="118" rx="48" fill="#cfa48f" opacity=".42"/>
-  <rect x="444" y="214" width="96" height="118" rx="48" fill="#b89b74" opacity=".36"/>
-  <rect x="382" y="244" width="36" height="72" rx="18" fill="#e3b9bd" opacity=".74"/>
+  <circle cx="684" cy="110" r="104" fill="#fffdf9" opacity=".7"/>
+  <circle cx="118" cy="390" r="150" fill="#f1c0af" opacity=".2"/>
+  <rect x="168" y="318" width="464" height="62" rx="31" fill="#fffdf9"/>
+  <circle cx="288" cy="210" r="48" fill="#f1c0af"/>
+  <path d="M236 208c6-49 43-71 90-47 24 12 32 42 20 74-36 1-76-2-110-27z" fill="#6b4a3e"/>
+  <path d="M198 336c14-55 50-83 92-83s78 28 92 83z" fill="#ffffff"/>
+  <path d="M248 258c16 20 62 20 78 0l-8 35c-14 12-49 12-62 0z" fill="#f1c0af"/>
+  <circle cx="268" cy="215" r="4" fill="#5d463e"/>
+  <circle cx="304" cy="215" r="4" fill="#5d463e"/>
+  <path d="M273 236c11 8 25 8 36 0" fill="none" stroke="#a66d62" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="512" cy="210" r="48" fill="#e8b7a8"/>
+  <path d="M460 208c6-49 43-71 90-47 24 12 32 42 20 74-36 1-76-2-110-27z" fill="#8c6251"/>
+  <path d="M420 336c14-55 50-83 92-83s78 28 92 83z" fill="#f7fbfc"/>
+  <path d="M472 258c16 20 62 20 78 0l-8 35c-14 12-49 12-62 0z" fill="#e8b7a8"/>
+  <circle cx="492" cy="215" r="4" fill="#5d463e"/>
+  <circle cx="528" cy="215" r="4" fill="#5d463e"/>
+  <path d="M499 236c11 8 25 8 36 0" fill="none" stroke="#a66d62" stroke-width="4" stroke-linecap="round"/>
+  <rect x="365" y="284" width="70" height="58" rx="12" fill="#dbe8ee"/>
+  <path d="M378 305h44" fill="none" stroke="#b89b74" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  <path d="M250 382h300" fill="none" stroke="#cfa48f" stroke-width="12" stroke-linecap="round" opacity=".32"/>
+  <rect x="0" y="0" width="800" height="500" fill="none" stroke="#eadfd6" stroke-width="16"/>
 </svg>
