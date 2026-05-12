@@ -491,6 +491,11 @@ h2 {
     0 0 0 8px rgba(250, 247, 243, 0.72);
 }
 
+.staff-photo--umehara {
+  aspect-ratio: 4 / 5;
+  object-position: center 18%;
+}
+
 .staff-copy {
   min-width: 0;
 }
