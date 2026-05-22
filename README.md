@@ -19,11 +19,6 @@ https://rina-11vp.onrender.com/
 - スマホメニューの動き: `assets/site.js`
 - 画像: `assets/images/`
 
-## 公開
-
-Cloudflare Pages、Netlify、Vercel などの静的ホスティングにそのまま公開できます。
-
-ビルドコマンドは不要です。公開ディレクトリはリポジトリのルートを指定してください。
 
 ## ローカル確認
 
