@@ -2082,19 +2082,25 @@ h2::after {
   .voice-photo {
     width: 100%;
     max-width: 190px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .member-card {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .staff-card {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .staff-photo {
     width: 100%;
     max-width: 220px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .member-avatar {
@@ -2102,6 +2108,13 @@ h2::after {
     height: auto;
     max-width: 220px;
     aspect-ratio: 1;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .staff-copy,
+  .member-content {
+    width: 100%;
   }
 
   .member-avatar::before {
