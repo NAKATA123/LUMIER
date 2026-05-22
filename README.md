@@ -2,6 +2,9 @@
 
 会社ホームページ用の静的サイトです。RailsやPostgreSQLは使わず、HTML/CSS/JavaScriptと画像だけで配信できます。
 
+##URL
+https://rina-11vp.onrender.com/
+
 ## ページ
 
 - `/` トップページ
