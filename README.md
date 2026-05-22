@@ -1,29 +1,34 @@
 # Bridal Salon LUMIER
 
-会社ホームページ用の静的サイトです。RailsやPostgreSQLは使わず、HTML/CSS/JavaScriptと画像だけで配信できます。
+結婚相談所「Bridal Salon LUMIER」のホームページです。  
+シンプルで上品なデザインを意識して制作しました。
 
-##URL
+## アプリURL
 https://rina-11vp.onrender.com/
 
-## ページ
+## 使用技術
+- HTML
+- CSS
+- JavaScript
+- Render
 
+## 主なページ
 - `/` トップページ
 - `/about/` ルミエールのご紹介
-- `/price/` 料金のご案内
+- `/price/` 料金案内
 - `/privacy/` 個人情報の取り扱いについて
 
-## 内容の変更
+## 工夫した点
+- スマホ対応のレスポンシブデザイン
+- 上品で見やすいUIデザイン
+- シンプルな導線設計
 
-- 文章やリンク: 各ページの `index.html`
-- デザイン: `assets/styles.css`
-- スマホメニューの動き: `assets/site.js`
-- 画像: `assets/images/`
+## ファイル構成
+- `assets/styles.css` : デザイン
+- `assets/site.js` : メニュー動作
+- `assets/images/` : 画像
 
+## ローカルでの起動方法
 
-## ローカル確認
-
-HTMLファイルをブラウザで開くか、必要なら簡易サーバーで確認できます。
-
-```sh
+```bash
 python3 -m http.server 8000
-```
