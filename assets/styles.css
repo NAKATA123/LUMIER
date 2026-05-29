@@ -465,25 +465,82 @@ h2::after {
 }
 
 .about-points {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  max-width: 900px;
-  margin: 34px auto 0;
-  padding: 0;
   list-style: none;
+  padding: 0;
+  margin: 56px auto 0;
+  max-width: 860px;
+
+  display: grid;
+  gap: 18px;
 }
 
 .about-points li {
-  padding: 9px 15px;
-  border: 1px solid rgba(198, 138, 157, 0.2);
-  border-radius: 999px;
-  background: rgba(255, 246, 249, 0.82);
-  color: #8b6d58;
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 8px 18px rgba(107, 91, 77, 0.06);
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(214, 186, 172, 0.28);
+
+  border-radius: 22px;
+
+  padding: 24px 28px 24px 58px;
+
+  font-size: 15px;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+
+  color: #5f4d4d;
+
+  box-shadow: 0 10px 30px rgba(190, 160, 160, 0.08);
+
+  backdrop-filter: blur(8px);
+
+  transition: all 0.3s ease;
+}
+
+.about-points li::before {
+  content: "";
+
+  position: absolute;
+  left: 24px;
+  top: 50%;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #e7c6cf,
+    #d8b68d
+  );
+
+  transform: translateY(-50%);
+
+  box-shadow: 0 0 0 6px rgba(231, 198, 207, 0.16);
+}
+
+.about-points li:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 16px 38px rgba(190, 160, 160, 0.14);
+}
+
+@media (max-width: 768px) {
+  .about-points {
+    margin-top: 40px;
+    gap: 14px;
+  }
+
+  .about-points li {
+    padding: 20px 20px 20px 52px;
+    font-size: 14px;
+    border-radius: 18px;
+  }
+
+  .about-points li::before {
+    left: 20px;
+  }
 }
 
 /* お知らせ */
