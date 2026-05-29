@@ -468,25 +468,32 @@ h2::after {
   list-style: none;
   padding: 0;
   margin: 56px auto 0;
-  max-width: 860px;
+  max-width: 980px;
 
   display: grid;
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .about-points li {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 146px;
 
-  background: rgba(255, 255, 255, 0.92);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 250, 246, 0.88)),
+    radial-gradient(circle at 96% 10%, rgba(239, 212, 221, 0.38), transparent 34%);
   border: 1px solid rgba(214, 186, 172, 0.28);
 
-  border-radius: 22px;
+  border-radius: 18px;
 
-  padding: 24px 28px 24px 58px;
+  padding: 26px 28px 26px 34px;
 
   font-size: 15px;
   line-height: 1.9;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
 
   color: #5f4d4d;
 
@@ -497,27 +504,52 @@ h2::after {
   transition: all 0.3s ease;
 }
 
+.about-points li:nth-child(5) {
+  grid-column: 1 / -1;
+  min-height: 124px;
+  padding-right: min(160px, 16vw);
+}
+
 .about-points li::before {
   content: "";
 
   position: absolute;
-  left: 24px;
-  top: 50%;
+  left: 18px;
+  top: 26px;
+  bottom: 26px;
 
-  width: 12px;
-  height: 12px;
+  width: 3px;
+  height: auto;
 
-  border-radius: 50%;
+  border-radius: 999px;
 
   background: linear-gradient(
-    135deg,
+    180deg,
     #e7c6cf,
     #d8b68d
   );
 
-  transform: translateY(-50%);
+  box-shadow: 0 0 0 5px rgba(231, 198, 207, 0.12);
+}
 
-  box-shadow: 0 0 0 6px rgba(231, 198, 207, 0.16);
+.about-point-title,
+.about-point-copy {
+  display: block;
+}
+
+.about-point-title {
+  color: #6b5b4d;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.about-point-copy {
+  margin-top: 8px;
+  color: #766a62;
+  font-size: 14px;
+  line-height: 1.85;
 }
 
 .about-points li:hover {
@@ -530,16 +562,34 @@ h2::after {
   .about-points {
     margin-top: 40px;
     gap: 14px;
+    grid-template-columns: 1fr;
   }
 
   .about-points li {
-    padding: 20px 20px 20px 52px;
+    min-height: auto;
+    padding: 22px 22px 22px 32px;
     font-size: 14px;
     border-radius: 18px;
   }
 
+  .about-points li:nth-child(5) {
+    grid-column: auto;
+    min-height: auto;
+    padding-right: 22px;
+  }
+
   .about-points li::before {
-    left: 20px;
+    left: 16px;
+    top: 24px;
+    bottom: 24px;
+  }
+
+  .about-point-title {
+    font-size: 16px;
+  }
+
+  .about-point-copy {
+    font-size: 13px;
   }
 }
 
@@ -1157,7 +1207,7 @@ h2::after {
 .flow-image {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 24 / 13;
   background: #fff;
   object-fit: cover;
   transition: transform 0.45s ease, filter 0.45s ease;
