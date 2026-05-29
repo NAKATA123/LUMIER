@@ -28,11 +28,6 @@ a {
   display: inline-block;
 }
 
-.text-keep {
-  display: inline-block;
-  white-space: nowrap;
-}
-
 /* ヘッダー */
 .header {
   position: fixed;
@@ -1574,9 +1569,8 @@ h2::after {
 
 .voices-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  gap: 34px;
-  max-width: 1040px;
+  grid-template-columns: 1fr;
+  max-width: 860px;
   margin: 0 auto;
   align-items: start;
 }
@@ -1669,80 +1663,6 @@ h2::after {
   color: #333;
   font-size: 15px;
   line-height: 1.9;
-}
-
-.voices-side {
-  position: sticky;
-  top: 96px;
-}
-
-.side-banner,
-.side-consult,
-.side-trust,
-.side-number {
-  display: block;
-  margin-bottom: 14px;
-  border: 1px solid #efc9d5;
-  background: #fff;
-}
-
-.side-banner {
-  padding: 18px 20px;
-  background: linear-gradient(90deg, #f091b3, #fff5f8);
-  color: #c35f84;
-  font-family: 'Noto Serif JP', serif;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.side-consult {
-  padding: 20px;
-  background: linear-gradient(135deg, #fff8fb, #f5d6e0);
-  color: #c35f84;
-  text-align: center;
-  font-weight: 700;
-}
-
-.side-consult span {
-  display: block;
-  color: #8a776a;
-  font-size: 12px;
-  font-weight: 400;
-}
-
-.side-trust {
-  padding: 24px 18px;
-  border-color: #eadfd6;
-  color: #6b5b4d;
-  text-align: center;
-}
-
-.side-trust p {
-  margin: 0 0 8px;
-  font-size: 12px;
-}
-
-.side-trust strong {
-  display: block;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.side-number {
-  padding: 14px 16px;
-  color: #2f2a26;
-  text-align: center;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.side-number span {
-  display: block;
-  color: #c35f84;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 400;
 }
 
 /* 会員様のご紹介 */
@@ -2098,34 +2018,17 @@ h2::after {
   );
 }
 
-.chart-legend {
-  display: grid;
-  gap: 10px;
-  color: #5d534d;
-  font-size: 14px;
-}
-
-.chart-legend span,
 .area-list li {
   display: flex;
   align-items: center;
   gap: 9px;
 }
 
-.chart-legend i,
 .area-list span {
   width: 11px;
   height: 11px;
   border-radius: 50%;
   flex: 0 0 auto;
-}
-
-.legend-men {
-  background: #a7cbd0;
-}
-
-.legend-women {
-  background: #d7a7b5;
 }
 
 .area-chart {
@@ -2428,10 +2331,6 @@ h2::after {
     padding-top: 50px;
   }
 
-  .voices-layout {
-    grid-template-columns: 1fr;
-  }
-
   .voices-title {
     padding: 0 0 18px 18px;
   }
@@ -2463,10 +2362,6 @@ h2::after {
   .voice-body p {
     font-size: 14px;
     line-height: 1.8;
-  }
-
-  .voices-side {
-    position: static;
   }
 
   .members-hero {
