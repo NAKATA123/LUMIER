@@ -57,7 +57,10 @@ function initHeroFlecks() {
 function initRevealMotion() {
   const revealTargets = document.querySelectorAll([
     "#about h2",
-    "#about p",
+    ".about-copy",
+    ".about-points",
+    ".news-heading",
+    ".news-stage",
     ".flow-heading",
     ".flow-map",
     ".flow-item",
@@ -106,6 +109,90 @@ function initRevealMotion() {
   });
 
   revealTargets.forEach((target) => observer.observe(target));
+}
+
+function initNewsSlider() {
+  const stage = document.querySelector(".news-stage");
+  const cards = Array.from(document.querySelectorAll("[data-news-card]"));
+  const modal = document.getElementById("news-modal");
+  const modalClose = document.getElementById("news-modal-close");
+  const modalTitle = document.getElementById("news-modal-title");
+  const modalDate = document.getElementById("news-modal-date");
+  const modalBody = document.getElementById("news-modal-body");
+  if (!stage || !cards.length || !modal) return;
+
+  let activeIndex = 0;
+  let lastMove = 0;
+
+  function wrapIndex(index) {
+    return (index + cards.length) % cards.length;
+  }
+
+  function getSlot(index) {
+    const raw = index - activeIndex;
+    const half = Math.floor(cards.length / 2);
+    if (raw > half) return raw - cards.length;
+    if (raw < -half) return raw + cards.length;
+    return raw;
+  }
+
+  function renderSlider() {
+    cards.forEach((card, index) => {
+      card.dataset.slot = String(getSlot(index));
+    });
+  }
+
+  function moveSlider(direction) {
+    activeIndex = wrapIndex(activeIndex + direction);
+    renderSlider();
+  }
+
+  function openArticle(card) {
+    modalTitle.textContent = card.dataset.title || "";
+    modalDate.textContent = card.dataset.date || "";
+    modalBody.textContent = card.dataset.body || "";
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    modalClose?.focus();
+  }
+
+  function closeArticle() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  renderSlider();
+
+  if (!prefersReducedMotion) {
+    stage.addEventListener("pointermove", (event) => {
+      const now = Date.now();
+      if (now - lastMove < 650) return;
+
+      const rect = stage.getBoundingClientRect();
+      const position = (event.clientX - rect.left) / rect.width;
+      if (position > 0.64) {
+        moveSlider(1);
+        lastMove = now;
+      } else if (position < 0.36) {
+        moveSlider(-1);
+        lastMove = now;
+      }
+    });
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => openArticle(card));
+  });
+
+  modalClose?.addEventListener("click", closeArticle);
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeArticle();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeArticle();
+    }
+  });
 }
 
 function initFlowMap() {
@@ -158,5 +245,6 @@ function initCardTilt() {
 initHeaderMotion();
 initHeroFlecks();
 initRevealMotion();
+initNewsSlider();
 initFlowMap();
 initCardTilt();
