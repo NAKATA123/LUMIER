@@ -1645,7 +1645,7 @@ h2::after {
   background: #fff;
   border: 1px solid #eadfd6;
   border-radius: 24px;
-  padding: 12px;
+  padding: 4px;
   box-shadow:
     0 14px 28px rgba(107, 91, 77, 0.08),
     0 0 0 8px rgba(250, 247, 243, 0.72);
@@ -1814,7 +1814,7 @@ h2::after {
   display: block;
   width: 118px;
   height: 118px;
-  padding: 10px;
+  padding: 4px;
   object-fit: contain;
   object-position: center;
   overflow: hidden;
@@ -2351,7 +2351,7 @@ h2::after {
 
   .voice-photo {
     width: 112px;
-    padding: 10px;
+    padding: 4px;
     border-radius: 22px;
   }
 
