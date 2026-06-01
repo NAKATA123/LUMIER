@@ -2613,14 +2613,24 @@ h2::after {
 .center-ul {
   list-style: none;
   padding: 0;
-  margin: 1rem auto;
-  max-width: 600px;
+  margin: 1.5rem auto;
+  max-width: 480px;
+  display: table;
 }
 
 .center-ul li {
-  text-align: left;
-  line-height: 1.8;
-  margin: 0.5rem 0;
+  line-height: 1.9;
+  padding-left: 1.4em;
+  position: relative;
+}
+
+.center-ul li::before {
+  content: "◇";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent, #c9a96e);
+  font-size: 0.75em;
+  top: 0.35em;
 }
 
 @media (max-width: 768px) {
