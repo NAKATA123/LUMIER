@@ -2601,16 +2601,25 @@ h2::after {
     gap: 6px;
   }
 }
-
 .center-ul {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
-  max-width: 600px; /* ここで幅を制御 */
+  margin: 1rem auto;
+  max-width: 600px;
 }
 
 .center-ul li {
-  text-align: left;  /* ここ重要 */
+  text-align: left;
   line-height: 1.8;
-  margin: 0.4rem 0;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+@media (max-width: 768px) {
+  .center-ul {
+    max-width: 90%;
+  }
+
+  .center-ul li {
+    font-size: 0.95rem;
+  }
 }
