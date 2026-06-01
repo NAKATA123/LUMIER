@@ -2601,6 +2601,15 @@ h2::after {
     gap: 6px;
   }
 }
+.about-copy {
+  padding: 0 1rem;
+}
+
+.about-copy p {
+  line-height: 1.9;
+  word-break: normal;
+}
+
 .center-ul {
   list-style: none;
   padding: 0;
@@ -2612,14 +2621,10 @@ h2::after {
   text-align: left;
   line-height: 1.8;
   margin: 0.5rem 0;
-  font-size: 1rem;
 }
+
 @media (max-width: 768px) {
   .center-ul {
     max-width: 90%;
-  }
-
-  .center-ul li {
-    font-size: 0.95rem;
   }
 }
