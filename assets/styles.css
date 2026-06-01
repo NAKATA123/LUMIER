@@ -2311,6 +2311,7 @@ h2::after {
     scrollbar-width: none;
     padding: 10px 20px 16px;
     perspective: none;
+    touch-action: pan-x;
   }
 
   .news-stage::-webkit-scrollbar {
