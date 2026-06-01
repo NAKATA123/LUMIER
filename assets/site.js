@@ -119,10 +119,15 @@ function initNewsSlider() {
   const modalTitle = document.getElementById("news-modal-title");
   const modalDate = document.getElementById("news-modal-date");
   const modalBody = document.getElementById("news-modal-body");
+  const prevBtn = document.getElementById("news-prev");
+  const nextBtn = document.getElementById("news-next");
+  const dotsContainer = document.getElementById("news-dots");
   if (!stage || !cards.length || !modal) return;
 
   let activeIndex = 0;
   let lastMove = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
 
   function wrapIndex(index) {
     return (index + cards.length) % cards.length;
@@ -139,6 +144,9 @@ function initNewsSlider() {
   function renderSlider() {
     cards.forEach((card, index) => {
       card.dataset.slot = String(getSlot(index));
+    });
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === activeIndex);
     });
   }
 
@@ -161,13 +169,32 @@ function initNewsSlider() {
     modal.setAttribute("aria-hidden", "true");
   }
 
+  // ドット生成
+  const dots = cards.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "news-dot";
+    dot.setAttribute("aria-label", `Issue ${index + 1}`);
+    dot.addEventListener("click", () => {
+      activeIndex = index;
+      renderSlider();
+    });
+    dotsContainer?.appendChild(dot);
+    return dot;
+  });
+
   renderSlider();
 
+  // ← → ボタン
+  prevBtn?.addEventListener("click", () => moveSlider(-1));
+  nextBtn?.addEventListener("click", () => moveSlider(1));
+
+  // マウスホバーナビ（デスクトップ）
   if (!prefersReducedMotion) {
     stage.addEventListener("pointermove", (event) => {
+      if (event.pointerType === "touch") return;
       const now = Date.now();
       if (now - lastMove < 650) return;
-
       const rect = stage.getBoundingClientRect();
       const position = (event.clientX - rect.left) / rect.width;
       if (position > 0.64) {
@@ -180,8 +207,25 @@ function initNewsSlider() {
     });
   }
 
+  // スワイプ（スマホ）
+  stage.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+  }, { passive: true });
+
+  stage.addEventListener("touchend", (event) => {
+    const dx = touchStartX - event.changedTouches[0].clientX;
+    const dy = touchStartY - event.changedTouches[0].clientY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      moveSlider(dx > 0 ? 1 : -1);
+    }
+  }, { passive: true });
+
+  // カードタップでモーダル
   cards.forEach((card) => {
-    card.addEventListener("click", () => openArticle(card));
+    card.addEventListener("click", () => {
+      if (card.dataset.slot === "0") openArticle(card);
+    });
   });
 
   modalClose?.addEventListener("click", closeArticle);

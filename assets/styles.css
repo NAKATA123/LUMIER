@@ -674,6 +674,58 @@ h2::after {
   max-width: 1080px;
   margin: 0 auto;
   perspective: 1200px;
+  touch-action: pan-y;
+}
+
+.news-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.news-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(198, 138, 157, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 246, 249, 0.9);
+  color: #c68a9d;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+.news-nav-btn:hover {
+  background: #f8edf1;
+  border-color: rgba(198, 138, 157, 0.6);
+  transform: scale(1.08);
+}
+
+.news-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.news-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(198, 138, 157, 0.28);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+
+.news-dot.is-active {
+  background: #c68a9d;
+  transform: scale(1.25);
 }
 
 .news-card {
@@ -2278,6 +2330,12 @@ h2::after {
 
   .news-stage {
     height: 460px;
+  }
+
+  .news-nav-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
   }
 
   .news-card {
