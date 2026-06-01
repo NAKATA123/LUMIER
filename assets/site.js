@@ -119,15 +119,12 @@ function initNewsSlider() {
   const modalTitle = document.getElementById("news-modal-title");
   const modalDate = document.getElementById("news-modal-date");
   const modalBody = document.getElementById("news-modal-body");
-  const prevBtn = document.getElementById("news-prev");
-  const nextBtn = document.getElementById("news-next");
   const dotsContainer = document.getElementById("news-dots");
   if (!stage || !cards.length || !modal) return;
 
+  const isMobile = () => window.innerWidth <= 768;
   let activeIndex = 0;
   let lastMove = 0;
-  let touchStartX = 0;
-  let touchStartY = 0;
 
   function wrapIndex(index) {
     return (index + cards.length) % cards.length;
@@ -176,8 +173,12 @@ function initNewsSlider() {
     dot.className = "news-dot";
     dot.setAttribute("aria-label", `Issue ${index + 1}`);
     dot.addEventListener("click", () => {
-      activeIndex = index;
-      renderSlider();
+      if (isMobile()) {
+        cards[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      } else {
+        activeIndex = index;
+        renderSlider();
+      }
     });
     dotsContainer?.appendChild(dot);
     return dot;
@@ -185,14 +186,10 @@ function initNewsSlider() {
 
   renderSlider();
 
-  // ← → ボタン
-  prevBtn?.addEventListener("click", () => moveSlider(-1));
-  nextBtn?.addEventListener("click", () => moveSlider(1));
-
-  // マウスホバーナビ（デスクトップ）
+  // デスクトップ：マウスホバーナビ
   if (!prefersReducedMotion) {
     stage.addEventListener("pointermove", (event) => {
-      if (event.pointerType === "touch") return;
+      if (isMobile() || event.pointerType === "touch") return;
       const now = Date.now();
       if (now - lastMove < 650) return;
       const rect = stage.getBoundingClientRect();
@@ -207,24 +204,24 @@ function initNewsSlider() {
     });
   }
 
-  // スワイプ（スマホ）
-  stage.addEventListener("touchstart", (event) => {
-    touchStartX = event.touches[0].clientX;
-    touchStartY = event.touches[0].clientY;
-  }, { passive: true });
-
-  stage.addEventListener("touchend", (event) => {
-    const dx = touchStartX - event.changedTouches[0].clientX;
-    const dy = touchStartY - event.changedTouches[0].clientY;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-      moveSlider(dx > 0 ? 1 : -1);
-    }
-  }, { passive: true });
+  // モバイル：スクロール位置でドットを更新
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (!isMobile()) return;
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = cards.indexOf(entry.target);
+          dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+        }
+      });
+    }, { root: stage, threshold: 0.6 });
+    cards.forEach((card) => observer.observe(card));
+  }
 
   // カードタップでモーダル
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      if (card.dataset.slot === "0") openArticle(card);
+      if (isMobile() || card.dataset.slot === "0") openArticle(card);
     });
   });
 
