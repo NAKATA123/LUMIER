@@ -1369,55 +1369,59 @@ h2::after {
 }
 
 .staff-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .staff-card {
   display: grid;
-  grid-template-columns: 168px minmax(0, 1fr);
-  gap: 24px;
-  align-items: center;
-  padding: 26px;
+  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-areas: "photo copy";
+  gap: 48px;
+  align-items: start;
+  padding: 40px;
   background: #fff;
   border: 1px solid #eadfd6;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0 14px 34px rgba(107, 91, 77, 0.07);
-  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   transition:
-    transform 0.28s ease,
     box-shadow 0.28s ease,
-    border-color 0.28s ease;
+    border-color 0.28s ease,
+    transform 0.28s ease;
+}
+
+.staff-card:nth-child(even) {
+  grid-template-columns: minmax(0, 1fr) 220px;
+  grid-template-areas: "copy photo";
 }
 
 .staff-card:hover {
   border-color: #efd4dd;
   box-shadow: 0 22px 48px rgba(107, 91, 77, 0.12);
-  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .staff-photo {
+  grid-area: photo;
   display: block;
-  width: 168px;
-  aspect-ratio: 1;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   border: 1px solid #eadfd6;
-  border-radius: 18px;
-  box-shadow:
-    0 14px 28px rgba(107, 91, 77, 0.1),
-    0 0 0 8px rgba(250, 247, 243, 0.72);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(107, 91, 77, 0.1);
 }
 
 .staff-photo--umehara {
-  aspect-ratio: 4 / 5;
   object-position: center 18%;
 }
 
 .staff-copy {
+  grid-area: copy;
   min-width: 0;
 }
 
@@ -1435,12 +1439,23 @@ h2::after {
 }
 
 .staff-copy h3 {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   color: #6b5b4d;
   font-family: 'Noto Serif JP', serif;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 2px;
+}
+
+.staff-message p {
+  margin: 0 0 12px;
+  color: #5d534d;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.staff-message p:last-child {
+  margin-bottom: 0;
 }
 
 .staff-career {
@@ -2304,18 +2319,16 @@ h2::after {
     font-size: 30px;
   }
 
-  .staff-grid {
-    grid-template-columns: 1fr;
-  }
-
   .staff-card {
-    grid-template-columns: 140px minmax(0, 1fr);
-    gap: 20px;
-    padding: 22px;
+    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-areas: "photo copy";
+    gap: 28px;
+    padding: 28px;
   }
 
-  .staff-photo {
-    width: 140px;
+  .staff-card:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr) 180px;
+    grid-template-areas: "copy photo";
   }
 
   .price-row {
@@ -2569,16 +2582,20 @@ h2::after {
     justify-items: center;
   }
 
-  .staff-card {
+  .staff-card,
+  .staff-card:nth-child(even) {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "copy";
     justify-items: center;
+    gap: 20px;
   }
 
   .staff-photo {
     width: 100%;
-    max-width: 220px;
-    margin-right: auto;
-    margin-left: auto;
+    max-width: 200px;
+    aspect-ratio: 3 / 4;
   }
 
   .member-avatar {
