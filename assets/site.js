@@ -122,9 +122,11 @@ function initNewsSlider() {
   const dotsContainer = document.getElementById("news-dots");
   if (!stage || !cards.length || !modal) return;
 
-  const isMobile = () => window.innerWidth <= 768;
   let activeIndex = 0;
   let lastMove = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchMoved = false;
 
   function wrapIndex(index) {
     return (index + cards.length) % cards.length;
@@ -156,6 +158,7 @@ function initNewsSlider() {
     modalTitle.textContent = card.dataset.title || "";
     modalDate.textContent = card.dataset.date || "";
     modalBody.textContent = card.dataset.body || "";
+    modal.scrollTop = 0;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     modalClose?.focus();
@@ -173,12 +176,8 @@ function initNewsSlider() {
     dot.className = "news-dot";
     dot.setAttribute("aria-label", `Issue ${index + 1}`);
     dot.addEventListener("click", () => {
-      if (isMobile()) {
-        cards[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-      } else {
-        activeIndex = index;
-        renderSlider();
-      }
+      activeIndex = index;
+      renderSlider();
     });
     dotsContainer?.appendChild(dot);
     return dot;
@@ -189,39 +188,43 @@ function initNewsSlider() {
   // デスクトップ：マウスホバーナビ
   if (!prefersReducedMotion) {
     stage.addEventListener("pointermove", (event) => {
-      if (isMobile() || event.pointerType === "touch") return;
+      if (event.pointerType === "touch") return;
       const now = Date.now();
       if (now - lastMove < 650) return;
       const rect = stage.getBoundingClientRect();
       const position = (event.clientX - rect.left) / rect.width;
-      if (position > 0.64) {
-        moveSlider(1);
-        lastMove = now;
-      } else if (position < 0.36) {
-        moveSlider(-1);
-        lastMove = now;
-      }
+      if (position > 0.64) { moveSlider(1); lastMove = now; }
+      else if (position < 0.36) { moveSlider(-1); lastMove = now; }
     });
   }
 
-  // モバイル：スクロール位置でドットを更新
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries) => {
-      if (!isMobile()) return;
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = cards.indexOf(entry.target);
-          dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
-        }
-      });
-    }, { root: stage, threshold: 0.6 });
-    cards.forEach((card) => observer.observe(card));
-  }
+  // スワイプ（スマホ・タブレット）
+  stage.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+    touchMoved = false;
+  }, { passive: true });
 
-  // カードタップでモーダル
+  stage.addEventListener("touchmove", (event) => {
+    const dx = Math.abs(event.touches[0].clientX - touchStartX);
+    const dy = Math.abs(event.touches[0].clientY - touchStartY);
+    if (dx > dy && dx > 8) touchMoved = true;
+  }, { passive: true });
+
+  stage.addEventListener("touchend", (event) => {
+    if (!touchMoved) return;
+    const dx = touchStartX - event.changedTouches[0].clientX;
+    const dy = touchStartY - event.changedTouches[0].clientY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      moveSlider(dx > 0 ? 1 : -1);
+    }
+  }, { passive: true });
+
+  // カードタップでモーダル（前面カードのみ）
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      if (isMobile() || card.dataset.slot === "0") openArticle(card);
+      if (touchMoved) return;
+      if (card.dataset.slot === "0") openArticle(card);
     });
   });
 
@@ -230,9 +233,7 @@ function initNewsSlider() {
     if (event.target === modal) closeArticle();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
-      closeArticle();
-    }
+    if (event.key === "Escape" && modal.classList.contains("is-open")) closeArticle();
   });
 }
 
