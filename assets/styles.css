@@ -681,7 +681,7 @@ h2::after {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .news-dot {
@@ -2307,15 +2307,22 @@ h2::after {
     gap: 14px;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: calc(50% - min(150px, 40vw));
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 10px 20px 16px;
+    padding: 10px 0 16px;
     perspective: none;
     touch-action: pan-x;
   }
 
   .news-stage::-webkit-scrollbar {
     display: none;
+  }
+
+  .news-stage::before,
+  .news-stage::after {
+    content: "";
+    flex: 0 0 calc(50% - min(150px, 40vw));
   }
 
   .news-card {
