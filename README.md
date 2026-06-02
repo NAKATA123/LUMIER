@@ -4,7 +4,7 @@
 シンプルで上品なデザインを意識して制作しました。
 
 ## アプリURL
-https://rina-11vp.onrender.com/
+https://bridalsalonlumier.com/
 
 ## 使用技術
 - HTML
