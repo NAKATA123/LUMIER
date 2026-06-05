@@ -118,6 +118,19 @@ function initNewsSlider() {
   const dotsContainer = document.getElementById("news-dots");
   if (!stage || !cards.length || !modal) return;
 
+  // data-image があればthumbにimgを注入
+  cards.forEach((card) => {
+    if (!card.dataset.image) return;
+    const thumb = card.querySelector(".news-thumb");
+    if (!thumb) return;
+    const img = document.createElement("img");
+    img.src = card.dataset.image;
+    img.alt = "";
+    img.className = "news-thumb-img";
+    thumb.appendChild(img);
+    card.classList.add("has-image");
+  });
+
   let activeIndex = 0;
   let lastMove = 0;
   let touchStartX = 0;
@@ -154,6 +167,17 @@ function initNewsSlider() {
     modalTitle.textContent = card.dataset.title || "";
     modalDate.textContent = card.dataset.date || "";
     modalBody.textContent = card.dataset.body || "";
+    const modalImg = document.getElementById("news-modal-image");
+    if (modalImg) {
+      if (card.dataset.image) {
+        modalImg.src = card.dataset.image;
+        modalImg.alt = card.dataset.title || "";
+        modalImg.removeAttribute("hidden");
+      } else {
+        modalImg.src = "";
+        modalImg.setAttribute("hidden", "");
+      }
+    }
     modal.scrollTop = 0;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");

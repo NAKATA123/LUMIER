@@ -827,15 +827,35 @@ h2::after {
 }
 
 .news-thumb::after {
-  content: "◇  ◇  ◇";
+  content: "✦";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgba(198, 138, 157, 0.38);
-  font-size: 16px;
-  letter-spacing: 6px;
-  white-space: nowrap;
+  color: rgba(198, 138, 157, 0.3);
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+.has-image .news-thumb::before,
+.has-image .news-thumb::after {
+  display: none;
+}
+
+.news-thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-modal-image {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
 
 .news-card[data-slot="0"] {
