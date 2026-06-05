@@ -1392,19 +1392,21 @@ h2::after {
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid #ddd5cc;
+  text-align: center;
 }
 
 .footer-area-label {
   font-weight: 600;
-  color: #6b5b4d !important;
-  margin-bottom: 6px !important;
+  color: #6b5b4d;
+  margin-bottom: 6px;
 }
 
 .footer-area-tags {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 6px !important;
+  justify-content: center;
+  margin-bottom: 6px;
 }
 
 .area-tag {
@@ -1417,7 +1419,7 @@ h2::after {
 }
 
 .footer-area-online {
-  color: #6b5b4d !important;
+  color: #6b5b4d;
 }
 
 /* 下層ページ */
@@ -2351,13 +2353,6 @@ h2::after {
     padding: 22px 20px 20px;
   }
 
-  .news-card {
-    top: 26px;
-    width: min(300px, 78vw);
-    min-height: 388px;
-    padding: 22px 20px 20px;
-  }
-
   .news-card strong {
     font-size: 22px;
   }
@@ -2528,10 +2523,6 @@ h2::after {
     letter-spacing: 2px;
     line-height: 1.5;
   }
-  body {
-    line-height: 1.8;
-  }
-
   .hero-content {
     padding: 24px 18px;
   }
