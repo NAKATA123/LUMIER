@@ -244,6 +244,14 @@ function initFlowMap() {
 
   flowDots[0].classList.add("is-active");
 
+  if (window.matchMedia("(hover: none)").matches) {
+    flowDots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        flowItems[i]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
   if (prefersReducedMotion || !("IntersectionObserver" in window)) return;
 
   const observer = new IntersectionObserver((entries) => {

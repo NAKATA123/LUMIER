@@ -1388,6 +1388,38 @@ h2::after {
   opacity: 0.7;
 }
 
+.footer-area {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd5cc;
+}
+
+.footer-area-label {
+  font-weight: 600;
+  color: #6b5b4d !important;
+  margin-bottom: 6px !important;
+}
+
+.footer-area-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 6px !important;
+}
+
+.area-tag {
+  display: inline-block;
+  padding: 2px 12px;
+  background: #e8ddd6;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #6b5b4d;
+}
+
+.footer-area-online {
+  color: #6b5b4d !important;
+}
+
 /* 下層ページ */
 .page-hero {
   padding: 150px 20px 90px;
@@ -2238,6 +2270,10 @@ h2::after {
   .flow-map::before,
   .flow-map::after {
     display: none;
+  }
+
+  .flow-map span {
+    cursor: pointer;
   }
 
   .flow-map span::before {
